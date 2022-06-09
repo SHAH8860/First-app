@@ -1,0 +1,28 @@
+<h1 class="text-center">Http Method</h1>
+<div class="container">
+    <form [formGroup]="postform" autocomplete="off" class="form-signin">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the title" formControlName="title">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+            <textarea formControlName="body" class="form-control" placeholder="Write the post" cols="30" rows="10"></textarea>
+            
+            <button class="btn btn-lg btn-primary btn-block" type="button" (click)="onSubmit()">Save</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <input (keyup.enter)="createPost(title)" #title type="text" class="form-control">
+    <ul class="list-group">
+        <li *ngFor="let post of datalist" class="list-group-item">
+            <button class="btn btn-default btn-sm" (click)="editPost(post)">Edit</button>
+            <button class="btn btn-default btn-sm" (click)="deletePost(post)">Delete</button>
+            <div><strong>{{post.id}}.{{post.title}}</strong></div>
+            <div>{{post.body}}</div>
+
+        </li>
+    </ul>
+</div>
